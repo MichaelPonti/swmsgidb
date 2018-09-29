@@ -12,7 +12,16 @@ document.getElementById('btnmessage').addEventListener('click', function (e) {
 
 
 document.getElementById('btnfetch').addEventListener('click', function (e) {
-	fetch('https://www.google.ca').then(function (response) {
-		console.log(response);
+});
+
+
+document.getElementById('btnSetCache').addEventListener('click', function (e) {
+	setCacheStatus(true, 'modelyo');
+});
+
+
+document.getElementById('btnGetCache').addEventListener('click', function (e) {
+	getCacheStatus().then(function (data) {
+		console.log(data);
 	});
 });
