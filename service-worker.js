@@ -3,7 +3,11 @@ self.importScripts('idb.js');
 self.importScripts('appdb.js');
 
 
-const swVersion = '09';
+var cacheOn = false;
+var cacheName = 'no-model';
+
+
+const swVersion = '10';
 
 self.addEventListener('install', function (event) {
 	console.log('install event');
@@ -42,3 +46,17 @@ self.addEventListener('push', function (event) {
 		})
 	);
 });
+
+
+
+
+
+setInterval(() => {
+	getCacheStatus().then(function (data) {
+		cacheOn = data.cacheOn;
+		cacheName = data.cacheName;
+		console.log(`caching status polled: ${cacheName}: ${cacheOn}`);
+	})
+}, 1000);
+
+
