@@ -16,7 +16,8 @@ document.getElementById('btnfetch').addEventListener('click', function (e) {
 
 
 document.getElementById('btnSetCache').addEventListener('click', function (e) {
-	setCacheStatus(true, 'modelyo');
+	var cacheName = document.getElementById('cacheName').value;
+	setCacheStatus(true, cacheName);
 });
 
 
@@ -25,3 +26,7 @@ document.getElementById('btnGetCache').addEventListener('click', function (e) {
 		console.log(data);
 	});
 });
+
+
+console.log(`isAndroid: ${MobileEsp.isAndroid}`);
+console.log(`isiPhone: ${MobileEsp.isIphone}`);
