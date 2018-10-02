@@ -7,7 +7,7 @@ var cacheOn = false;
 var cacheName = 'no-model';
 
 
-const swVersion = '10';
+const swVersion = '20';
 
 self.addEventListener('install', function (event) {
 	console.log('install event');
@@ -48,15 +48,21 @@ self.addEventListener('push', function (event) {
 });
 
 
+self.addEventListener('message', function (event) {
+	console.log('from message event in service worker');
+	console.log(`command: ${event.data.command} cacheOn: ${event.data.data.cacheOn} ${event.data.data.cacheName}`);
+});
 
 
 
-setInterval(() => {
-	getCacheStatus().then(function (data) {
-		cacheOn = data.cacheOn;
-		cacheName = data.cacheName;
-		console.log(`caching status polled: ${cacheName}: ${cacheOn}`);
-	})
-}, 1000);
+
+
+// setInterval(() => {
+// 	getCacheStatus().then(function (data) {
+// 		cacheOn = data.cacheOn;
+// 		cacheName = data.cacheName;
+// 		console.log(`caching status polled: ${cacheName}: ${cacheOn}`);
+// 	})
+// }, 1000);
 
 

@@ -30,3 +30,8 @@ document.getElementById('btnGetCache').addEventListener('click', function (e) {
 
 console.log(`isAndroid: ${MobileEsp.isAndroid}`);
 console.log(`isiPhone: ${MobileEsp.isIphone}`);
+
+document.getElementById('btnMessage').addEventListener('click', function (e) {
+	var cacheName = document.getElementById('cacheName').value;
+	navigator.serviceWorker.controller.postMessage({ command: 'cache', data: { cacheOn: true, cacheName: cacheName }});
+});
